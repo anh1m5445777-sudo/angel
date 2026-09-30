@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для моей Ангелины</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hearts-container" id="hearts"></div>
+
+    <header>
+        <h1 class="fade-in">Для моей Ангелины</h1>
+        <p class="subtitle fade-in">Ты — самое прекрасное, что случилось в моей жизни</p>
+    </header>
+
+    <section class="letter-section">
+        <div class="envelope-wrapper">
+            <div class="envelope" id="envelope">
+                <div class="letter">
+                    <p>Моя дорогая Ангелина!</p>
+                    <p>Я создал этот маленький уголок в интернете, чтобы напомнить тебе, как сильно я тебя люблю. Ты наполняешь каждый мой день светом и теплом. Спасибо, что ты есть в моей жизни.</p>
+                    <p>Навсегда твой...</p>
+                </div>
+            </div>
+            <button id="open-btn">Открыть письмо</button>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <h2>Наши Моменты</h2>
+        <div class="grid">
+            <div class="photo-card"><img src="photo1.jpg" alt="Наше фото 1"><p>Счастливый момент</p></div>
+            <div class="photo-card"><img src="photo2.jpg" alt="Наше фото 2"><p>Любимая улыбка</p></div>
+            <div class="photo-card"><img src="photo3.jpg" alt="Наше фото 3"><p>Лучший день</p></div>
+            <div class="photo-card"><img src="photo4.jpg" alt="Наше фото 4"><p>Вместе навсегда</p></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Создано с ❤️ специально для тебя</p>
+    </footer>
+
+    <script>
+        const openBtn = document.getElementById('open-btn');
+        const envelope = document.getElementById('envelope');
+
+        openBtn.addEventListener('click', () => {
+            envelope.classList.toggle('open');
+            openBtn.textContent = envelope.classList.contains('open') ? 'Закрыть' : 'Открыть письмо';
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.opacity = Math.random();
+            document.getElementById('hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
